@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Template: This PHP class is a Template Engine responsible fopr page rendering of a website using tags and predefined templates that manages all the website's pages
+ * Template: This PHP class is a Template Engine responsible for page rendering of a website using tags and predefined templates that manages all the website's pages
  * in a professional and easy way.
  * It support user defined tags, loops and conditions (coming soon).
  * It also takes care to the state the user is on, either logged-in or logged-out, also with a special tag.
- * It support user defined functins and PHP's built in functions, another Open Source library I released, nsgRPN.php (https://github.com/egpo/Reverse-Polish-Notation) and 
+ * It support user defined functins and PHP's built in functions, another Open Source library I released, nsfgRPN.php (https://github.com/egpo/Reverse-Polish-Notation) and 
  * string manipulations with another open source library I released, Strings.php (https://github.com/egpo/php-jqString).
  *
  * latest release can be found on GitHub: https://github.com/egpo/Template
@@ -158,123 +158,8 @@ class Template {
 		};		
 	}
 
-// looping
-/*
-			$incfile->block($begin_regex,$end_regex,PREG_OFFSET_CAPTURE_INNER)->each(function($block){
-				//$inchtml = $incfile->substring($begin[1]+StaticString::strlen($begin[0]),$end[1]);
-				$inchtml = StaticString::_substring($block[0],$block[2],$block[3]-$block[1]);
-				/ *					$incfile->match($body_regex)->each(function($val){
-				 $begin = $incfile->match("/<body[\s0-9a-zA-Z\"'=;()]*>/",PREG_OFFSET_CAPTURE)[0];
-						$end = $incfile->match("/<\/body>/",PREG_OFFSET_CAPTURE)[0];
-						$inchtml = $incfile->substring($begin[1]+StaticString::strlen($begin[0]),$end[1]);
-						* /					});
-			
-	
-	
-	} // incfiles
-	*/
-/*working
-
-	private function incfiles(){
-		$inc_regex = "/{include[\s]+[0-9a-z.-_]+}/";
-	
-		$this->template->match($inc_regex)->each(function ($inctag){
-			$body_regex = "/<body[\s\d\w\"';():=]*>[\s\d\w\r\n\"';():=.]*<\/body>/";
-			if ($incfilename = StaticString::word_count($inctag,WC_WORDS,'.-_0123456789')[1]){
-				if ($incfile = new String($this->_loadpage($incfilename))){
-					$begin = $incfile->match("/<body[\s0-9a-zA-Z\"'=;()]*>/",PREG_OFFSET_CAPTURE)[0];
-					$end = $incfile->match("/<\/body>/",PREG_OFFSET_CAPTURE)[0];
-					$inchtml = $incfile->substring($begin[1]+StaticString::strlen($begin[0]),$end[1]);
-				}
-			}
-			$this->template = $this->template->replace($inctag, $inchtml);
-		});
-	} // incfiles
-	
-	*/
+// coming soon...
 //	function conditions($html, $data)
-	//{
-		// {if <var>=
-/*	
-		$p1 = strpos($html, "%%cond_");
-		while (!($p1 === false))
-		{	$html[$p1+0] = "+";
-		$html[$p1+1] = "+";
-	
-		$p2 = strpos($html, "_begin%%", $p1+7);
-		if (!($p2 === false))
-		{	$cond = substr($html, $p1+7, $p2-$p1-7);
-	
-		$p3 = strpos($html, "%%cond_".$cond."_end%%");
-		if (!($p3 === false))
-		{	$html[$p3+0] = "+";
-		$html[$p3+1] = "+";
-	
-		$condline = substr($html, $p1+15+strlen($cond), $p3-$p1-(15+strlen($cond)));
-		switch ($cond)
-		{
-			case "newsite":
-				{	if ($data["newurl"] == "no")
-				{	$condline = "";
-				}
-				} break;
-			case "oldsite":
-				{	if (($data["newurl"] == "yes") || ($data["curr_catid"] != $data["catid"]))
-				{	$condline = "";
-				}
-				} break;
-			case "modsite":
-				{	if (($data["newurl"] == "yes") || ($data["curr_catid"] == $data["catid"]))
-				{	$condline = "";
-				}
-				} break;
-			case "catdesc":
-				{	if ($data["description"] == "")
-				{	$condline = "";
-				}
-				} break;
-			case "browser_explorer":
-				{	if (get_browser_type() != "IE")
-				{	$condline = "";
-				}
-				} break;
-			case "browser_firefox":
-				{	if (get_browser_type() != "FF")
-				{	$condline = "";
-				}
-				} break;
-			case "browser_chrome":
-				{	if (get_browser_type() != "CH")
-				{	$condline = "";
-				}
-				} break;
-			case "browser_other":
-				{	if (get_browser_type() != "NA")
-				{	$condline = "";
-				}
-				} break;
-			case "logo":
-				{	if ($data["logo"] == "none")
-				{	$condline = "";
-				}
-				} break;
-			case "nologo":
-				{	if ($data["logo"] != "none")
-				{	$condline = "";
-				}
-				} break;
-			default:
-				{	$condline = "";
-				} break;
-		}
-		$html = substr($html, 0, $p1).$condline.substr($html, $p3+strlen+13+strlen($cond));
-		}
-		$p1 = strpos($html, "%%cond_");
-		}
-		}
-		return $html;
-		*/
-	//} // process_conditions
 
 	// Process loops, repeated blocks, in the Templates
 	// TAG: {loop $loopvar} .... {/loop}
@@ -334,7 +219,6 @@ class Template {
 							unset($this->data['loopdata']);
 						}// else {
 							//$this->template = $this->template->replace($block[0], $loopresobj);
-							
 						//}
 					}
 				}
